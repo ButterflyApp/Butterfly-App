@@ -152,19 +152,26 @@ public class StateResource {
 		List<StateDTO> stateList = stateService.findAll();
 		List<District> dList = null;
 		List<Location> locationList = null;
+
 		long locationCount = 0;
 
 		for (int i = 0; i < stateList.size(); i++) {
 			StateDTO st = stateList.get(i);
 			dList = null;
 			locationCount = 0;
+			List<Location> stateLocations = new ArrayList<Location>();
 			dList = districtService.findByStateId(st.getId());
 			StateMediator stateMediator = new StateMediator();
 
 			for (int k = 0; k < dList.size(); k++) {
 
 				locationList = locationService.findByDistrictId(dList.get(k).getId());
-				locationCount = (locationCount + locationList.size());
+				for (Location loc : locationList) {
+					stateLocations.add(loc);
+				}
+
+				 //locationCount = (locationCount + locationList.size());
+				locationCount = stateLocations.size();
 
 			}
 
@@ -173,6 +180,30 @@ public class StateResource {
 			stateMediator.setDistrictCount(dList.size());
 			stateMediator.setLocationCount(locationCount);
 
+			if (stateLocations.size() >= 5) {
+
+				int s = (int) (Math.random() * stateLocations.size() );
+				stateMediator.setImage1(stateLocations.get(s).getImage1());
+				stateMediator.setImage1ContentType(stateLocations.get(s).getImage1ContentType());
+
+				int s2 = (int) (Math.random() * stateLocations.size());
+				stateMediator.setImage2(stateLocations.get(s2).getImage2());
+				stateMediator.setImage2ContentType(stateLocations.get(s2).getImage2ContentType());
+
+				int s3 = (int)( Math.random() * stateLocations.size());
+				stateMediator.setImage3(stateLocations.get(s3).getImage3());
+				stateMediator.setImage3ContentType(stateLocations.get(s3).getImage3ContentType());
+
+				int s4 = (int) (Math.random() * stateLocations.size());
+				stateMediator.setImage4(stateLocations.get(s4).getImage4());
+				stateMediator.setImage4ContentType(stateLocations.get(s4).getImage4ContentType());
+
+				int s5 = (int) (Math.random() * stateLocations.size());
+				stateMediator.setImage5(stateLocations.get(s5).getImage5());
+				stateMediator.setImage5ContentType(stateLocations.get(s5).getImage5ContentType());
+				
+				
+			}
 			list.add(stateMediator);
 
 		}
@@ -180,4 +211,5 @@ public class StateResource {
 		return list;
 
 	}
+
 }

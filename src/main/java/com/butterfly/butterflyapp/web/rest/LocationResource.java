@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import org.springframework.http.MediaType;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -129,13 +131,20 @@ public class LocationResource {
     	return locationService.findById(id);
     }
     
-/*	@GetMapping(value="/locations/getImage/{id}",produces=MediaType.IMAGE_JPEG_VALUE)
-	public byte[] getImage(@RequestParam Long id){
-		
-		
-		Location location=locationService.findById(id);
-					
-		
-		return location.getImage1();
-	}*/
+   /* @GetMapping("/locations/random")
+    public List<Location> getRandomLocations(){
+    	List<Location> list=locationService.findAllLocations();
+    	List<Location>randomList=new ArrayList<Location>();
+    	if(list.size()>=2)
+    	{
+    		for(int i=0;i<2;i++) {
+    			int k=(int) Math.floor(Math.random() * list.size());
+    			randomList.add(list.get(k));
+    			
+    		}
+    		
+    	}
+    
+    	return randomList;
+    }*/
 }

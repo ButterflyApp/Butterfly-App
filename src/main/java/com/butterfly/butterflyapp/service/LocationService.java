@@ -41,4 +41,5 @@ public interface LocationService {
     
     public List<Location> findByDistrictId(Long id);
     public Location findById(Long id);
+    List<Location> findAllLocations();
 }

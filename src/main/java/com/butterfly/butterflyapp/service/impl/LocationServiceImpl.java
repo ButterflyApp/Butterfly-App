@@ -96,4 +96,10 @@ public class LocationServiceImpl implements LocationService{
 		
 		return locationRepository.findById(id);
 	}
+
+	@Override
+	public List<Location> findAllLocations() {
+		
+		return locationRepository.findAll();
+	}
 }

@@ -19,19 +19,10 @@ export class HomeService {
 
     return this.http.get(url)
       .map((resp: Response) => {
-       
+       // console.log(JSON.parse(JSON.stringify(resp))._body);
         return resp.json();
       }).catch(this.handleError);
   }
-  randomImages() {
-    const url = `/api/states/allData`;
-
-    return this.http.get(url)
-      .map((resp: Response) => {
-       
-        return resp.json();
-      }).catch(this.handleError);
-  }
-
+  
   
 }
