@@ -1,0 +1,31 @@
+
+<div *ngIf="district">
+    <h2><span jhiTranslate="butterflyApp.district.detail.title">District</span> {{district.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="butterflyApp.district.districtName">District Name</span></dt>
+        <dd>
+            <span>{{district.districtName}}</span>
+        </dd>
+        <dt><span jhiTranslate="butterflyApp.district.state">State</span></dt>
+        <dd>
+            <div *ngIf="district.stateId">
+                <a [routerLink]="['/state-my-suffix', district.stateId]">{{district.stateId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'district-my-suffix/'+ district.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

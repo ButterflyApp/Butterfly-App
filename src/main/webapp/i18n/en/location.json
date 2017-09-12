@@ -1,0 +1,27 @@
+{
+    "butterflyApp": {
+        "location" : {
+            "home": {
+                "title": "Locations",
+                "createLabel": "Create a new Location",
+                "createOrEditLabel": "Create or edit a Location"
+            },
+            "created": "A new Location is created with identifier {{ param }}",
+            "updated": "A Location is updated with identifier {{ param }}",
+            "deleted": "A Location is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Location {{ id }}?"
+            },
+            "detail": {
+                "title": "Location"
+            },
+            "locationName": "Location Name",
+            "image1": "Image 1",
+            "image2": "Image 2",
+            "image3": "Image 3",
+            "image4": "Image 4",
+            "image5": "Image 5",
+            "district": "District"
+        }
+    }
+}

@@ -1,0 +1,122 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myLocationLabel" jhiTranslate="butterflyApp.location.home.createOrEditLabel">Create or edit a Location</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!location.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="location.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="butterflyApp.location.locationName" for="field_locationName">Location Name</label>
+            <input type="text" class="form-control" name="locationName" id="field_locationName"
+                [(ngModel)]="location.locationName"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="butterflyApp.location.image1" for="field_image1">Image 1</label>
+            <div>
+                <img [src]="'data:' + location.image1ContentType + ';base64,' + location.image1" style="max-height: 100px;" *ngIf="location.image1" alt="location image"/>
+                <div *ngIf="location.image1" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{location.image1ContentType}}, {{byteSize(location.image1)}}</span>
+                    <button type="button" (click)="clearInputImage('image1', 'image1ContentType', 'fileImage')" class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="fileImage" (change)="setFileData($event, location, 'image1', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="image1" id="field_image1"
+                [(ngModel)]="location.image1"  />
+            <input type="hidden" class="form-control" name="image1ContentType" id="field_image1ContentType"
+                [(ngModel)]="location.image1ContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="butterflyApp.location.image2" for="field_image2">Image 2</label>
+            <div>
+                <img [src]="'data:' + location.image2ContentType + ';base64,' + location.image2" style="max-height: 100px;" *ngIf="location.image2" alt="location image"/>
+                <div *ngIf="location.image2" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{location.image2ContentType}}, {{byteSize(location.image2)}}</span>
+                    <button type="button" (click)="clearInputImage('image2', 'image2ContentType', 'fileImage')" class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="fileImage" (change)="setFileData($event, location, 'image2', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="image2" id="field_image2"
+                [(ngModel)]="location.image2"  />
+            <input type="hidden" class="form-control" name="image2ContentType" id="field_image2ContentType"
+                [(ngModel)]="location.image2ContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="butterflyApp.location.image3" for="field_image3">Image 3</label>
+            <div>
+                <img [src]="'data:' + location.image3ContentType + ';base64,' + location.image3" style="max-height: 100px;" *ngIf="location.image3" alt="location image"/>
+                <div *ngIf="location.image3" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{location.image3ContentType}}, {{byteSize(location.image3)}}</span>
+                    <button type="button" (click)="clearInputImage('image3', 'image3ContentType', 'fileImage')" class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="fileImage" (change)="setFileData($event, location, 'image3', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="image3" id="field_image3"
+                [(ngModel)]="location.image3"  />
+            <input type="hidden" class="form-control" name="image3ContentType" id="field_image3ContentType"
+                [(ngModel)]="location.image3ContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="butterflyApp.location.image4" for="field_image4">Image 4</label>
+            <div>
+                <img [src]="'data:' + location.image4ContentType + ';base64,' + location.image4" style="max-height: 100px;" *ngIf="location.image4" alt="location image"/>
+                <div *ngIf="location.image4" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{location.image4ContentType}}, {{byteSize(location.image4)}}</span>
+                    <button type="button" (click)="clearInputImage('image4', 'image4ContentType', 'fileImage')" class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="fileImage" (change)="setFileData($event, location, 'image4', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="image4" id="field_image4"
+                [(ngModel)]="location.image4"  />
+            <input type="hidden" class="form-control" name="image4ContentType" id="field_image4ContentType"
+                [(ngModel)]="location.image4ContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="butterflyApp.location.image5" for="field_image5">Image 5</label>
+            <div>
+                <img [src]="'data:' + location.image5ContentType + ';base64,' + location.image5" style="max-height: 100px;" *ngIf="location.image5" alt="location image"/>
+                <div *ngIf="location.image5" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{location.image5ContentType}}, {{byteSize(location.image5)}}</span>
+                    <button type="button" (click)="clearInputImage('image5', 'image5ContentType', 'fileImage')" class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="fileImage" (change)="setFileData($event, location, 'image5', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="image5" id="field_image5"
+                [(ngModel)]="location.image5"  />
+            <input type="hidden" class="form-control" name="image5ContentType" id="field_image5ContentType"
+                [(ngModel)]="location.image5ContentType" />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="butterflyApp.location.district" for="field_district">District</label>
+            <select class="form-control" id="field_district" name="district" [(ngModel)]="location.districtId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="districtOption.id" *ngFor="let districtOption of districts; trackBy: trackDistrictById">{{districtOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

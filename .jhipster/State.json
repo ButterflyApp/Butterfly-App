@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "country",
+            "otherEntityName": "country",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "district",
+            "otherEntityName": "district",
+            "otherEntityRelationshipName": "state"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "stateName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170814184510",
+    "entityTableName": "state",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "angularJSSuffix": "mySuffix"
+}

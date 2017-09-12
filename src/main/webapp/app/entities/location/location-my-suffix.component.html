@@ -1,0 +1,97 @@
+<div>
+    <h2>
+        <span jhiTranslate="butterflyApp.location.home.title">Locations</span>
+        <button class="btn btn-primary float-right jh-create-entity create-location-my-suffix" [routerLink]="['/', { outlets: { popup: ['location-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="butterflyApp.location.home.createLabel">
+            Create new Location
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="locations">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="butterflyApp.location.locationName">Location Name</span></th>
+            <th><span jhiTranslate="butterflyApp.location.image1">Image 1</span></th>
+            <th><span jhiTranslate="butterflyApp.location.image2">Image 2</span></th>
+            <th><span jhiTranslate="butterflyApp.location.image3">Image 3</span></th>
+            <th><span jhiTranslate="butterflyApp.location.image4">Image 4</span></th>
+            <th><span jhiTranslate="butterflyApp.location.image5">Image 5</span></th>
+            <th><span jhiTranslate="butterflyApp.location.district">District</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let location of locations ;trackBy: trackId">
+                <td><a [routerLink]="['../location-my-suffix', location.id ]">{{location.id}}</a></td>
+                <td>{{location.locationName}}</td>
+                <td>
+                    <a *ngIf="location.image1" (click)="openFile(location.image1ContentType, location.image1)">
+                        <img [src]="'data:' + location.image1ContentType + ';base64,' + location.image1" style="max-height: 30px;" alt="location image"/>
+                    </a>
+                    <span *ngIf="location.image1">{{location.image1ContentType}}, {{byteSize(location.image1)}}</span>
+                </td>
+                <td>
+                    <a *ngIf="location.image2" (click)="openFile(location.image2ContentType, location.image2)">
+                        <img [src]="'data:' + location.image2ContentType + ';base64,' + location.image2" style="max-height: 30px;" alt="location image"/>
+                    </a>
+                    <span *ngIf="location.image2">{{location.image2ContentType}}, {{byteSize(location.image2)}}</span>
+                </td>
+                <td>
+                    <a *ngIf="location.image3" (click)="openFile(location.image3ContentType, location.image3)">
+                        <img [src]="'data:' + location.image3ContentType + ';base64,' + location.image3" style="max-height: 30px;" alt="location image"/>
+                    </a>
+                    <span *ngIf="location.image3">{{location.image3ContentType}}, {{byteSize(location.image3)}}</span>
+                </td>
+                <td>
+                    <a *ngIf="location.image4" (click)="openFile(location.image4ContentType, location.image4)">
+                        <img [src]="'data:' + location.image4ContentType + ';base64,' + location.image4" style="max-height: 30px;" alt="location image"/>
+                    </a>
+                    <span *ngIf="location.image4">{{location.image4ContentType}}, {{byteSize(location.image4)}}</span>
+                </td>
+                <td>
+                    <a *ngIf="location.image5" (click)="openFile(location.image5ContentType, location.image5)">
+                        <img [src]="'data:' + location.image5ContentType + ';base64,' + location.image5" style="max-height: 30px;" alt="location image"/>
+                    </a>
+                    <span *ngIf="location.image5">{{location.image5ContentType}}, {{byteSize(location.image5)}}</span>
+                </td>
+                <td>
+                    <div *ngIf="location.districtId">
+                        <a [routerLink]="['../district-my-suffix', location.districtId  ]" >{{location.districtId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../location-my-suffix', location.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'location-my-suffix/'+ location.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'location-my-suffix/'+ location.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+
+/* ==========================================================================
+Main page styles
+========================================================================== */
+.loading {
+    opacity: 0.8;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1055;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: url('../../content/images/loading.gif');
+    background-position: center;
+    background-size: contain;
+    // background-repeat: no-repeat;
+}
+.hipster {
+    display: inline-block;
+    width: 347px;
+    height: 497px;
+    background: url("../../content/images/hipster.png") no-repeat center top;
+    background-size: contain;
+}
+
+/* wait autoprefixer update to allow simple generation of high pixel density media query */
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+    .hipster {
+        background: url("../../content/images/loading.gif") no-repeat center top;
+        background-size: contain;
+    }
+    
+    
+}

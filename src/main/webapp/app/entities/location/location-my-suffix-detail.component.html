@@ -1,0 +1,76 @@
+
+<div *ngIf="location">
+    <h2><span jhiTranslate="butterflyApp.location.detail.title">Location</span> {{location.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="butterflyApp.location.locationName">Location Name</span></dt>
+        <dd>
+            <span>{{location.locationName}}</span>
+        </dd>
+        <dt><span jhiTranslate="butterflyApp.location.image1">Image 1</span></dt>
+        <dd>
+            <div *ngIf="location.image1">
+                <a (click)="openFile(location.image1ContentType, location.image1)">
+                    <img [src]="'data:' + location.image1ContentType + ';base64,' + location.image1" style="max-width: 100%;" alt="location image"/>
+                </a>
+                {{location.image1ContentType}}, {{byteSize(location.image1)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="butterflyApp.location.image2">Image 2</span></dt>
+        <dd>
+            <div *ngIf="location.image2">
+                <a (click)="openFile(location.image2ContentType, location.image2)">
+                    <img [src]="'data:' + location.image2ContentType + ';base64,' + location.image2" style="max-width: 100%;" alt="location image"/>
+                </a>
+                {{location.image2ContentType}}, {{byteSize(location.image2)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="butterflyApp.location.image3">Image 3</span></dt>
+        <dd>
+            <div *ngIf="location.image3">
+                <a (click)="openFile(location.image3ContentType, location.image3)">
+                    <img [src]="'data:' + location.image3ContentType + ';base64,' + location.image3" style="max-width: 100%;" alt="location image"/>
+                </a>
+                {{location.image3ContentType}}, {{byteSize(location.image3)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="butterflyApp.location.image4">Image 4</span></dt>
+        <dd>
+            <div *ngIf="location.image4">
+                <a (click)="openFile(location.image4ContentType, location.image4)">
+                    <img [src]="'data:' + location.image4ContentType + ';base64,' + location.image4" style="max-width: 100%;" alt="location image"/>
+                </a>
+                {{location.image4ContentType}}, {{byteSize(location.image4)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="butterflyApp.location.image5">Image 5</span></dt>
+        <dd>
+            <div *ngIf="location.image5">
+                <a (click)="openFile(location.image5ContentType, location.image5)">
+                    <img [src]="'data:' + location.image5ContentType + ';base64,' + location.image5" style="max-width: 100%;" alt="location image"/>
+                </a>
+                {{location.image5ContentType}}, {{byteSize(location.image5)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="butterflyApp.location.district">District</span></dt>
+        <dd>
+            <div *ngIf="location.districtId">
+                <a [routerLink]="['/district-my-suffix', location.districtId]">{{location.districtId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'location-my-suffix/'+ location.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

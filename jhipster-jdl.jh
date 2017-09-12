@@ -1,0 +1,42 @@
+
+entity Country {
+	countryName String
+}
+entity State {
+	stateName String
+}
+
+entity District {
+	districtName String
+}
+
+entity Location {
+	locationName String,
+     image1 ImageBlob,
+     image2 ImageBlob,
+     image3 ImageBlob,
+     image4 ImageBlob,
+     image5 ImageBlob
+}
+
+
+
+
+
+
+relationship OneToMany {
+	Country{state} to State,
+    State{district} to District,
+    District{location} to Location
+
+}
+
+
+
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+// Set an angular suffix
+angularSuffix * with mySuffix
