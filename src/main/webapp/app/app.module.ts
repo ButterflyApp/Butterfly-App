@@ -15,7 +15,8 @@ import { ButterflyAppPlaceModule } from './place/place.module';
 
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
-
+//import { CoreModule } from './core/core.module';
+import { LoadingModule } from 'ngx-loading';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 
 import {
@@ -43,7 +44,9 @@ import {
         ButterflyAppEntityModule,
         ButterflyAppStatesModule,
         ButterflyAppPlaceModule,
+        LoadingModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
+   
     ],
     declarations: [
         JhiMainComponent,

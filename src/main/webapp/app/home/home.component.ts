@@ -30,25 +30,31 @@ export class HomeComponent implements OnInit {
     private eventManager: JhiEventManager,
     private homeService: HomeService
   ) {
-
+    
   }
   collapseNavbar() {
+   
     this.isNavbarCollapsed = true;
 }
 
   ngOnInit() {
+   // this.loading=true;
     this.principal.identity().then((account) => {
       this.account = account;
+      
       console.log(JSON.stringify(this.account))
     });
 
     this.registerAuthenticationSuccess();
+    
   }
 
   registerAuthenticationSuccess() {
+   
     this.eventManager.subscribe('authenticationSuccess', (message) => {
       this.principal.identity().then((account) => {
         this.account = account;
+       
       });
     });
   }
@@ -57,6 +63,7 @@ export class HomeComponent implements OnInit {
     if (!this.isState && this.principal.isAuthenticated()) {
       this.getAllStates();
       this.isState = true;
+      
     }
 
 
@@ -65,10 +72,8 @@ export class HomeComponent implements OnInit {
   getAllStates() {
     this.loading = true;
     this.homeService.viewStates().finally(() => {
-      // this.loading = false;
-      setTimeout(() => {  this.loading = false;}, 3000)
-
-
+       this.loading = false;
+  
     }).
       subscribe((res) => {
 
