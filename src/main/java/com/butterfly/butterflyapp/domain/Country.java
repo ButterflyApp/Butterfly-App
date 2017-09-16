@@ -1,6 +1,8 @@
 package com.butterfly.butterflyapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -26,9 +28,10 @@ public class Country implements Serializable {
 
     @Column(name = "country_name")
     private String countryName;
+    
 
-    @OneToMany(mappedBy = "country")
-    @JsonIgnore
+    @OneToMany(mappedBy = "country",fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"country"})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<State> states = new HashSet<>();
 

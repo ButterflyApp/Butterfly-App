@@ -1,5 +1,6 @@
 package com.butterfly.butterflyapp.service;
 
+import com.butterfly.butterflyapp.domain.Country;
 import com.butterfly.butterflyapp.service.dto.CountryDTO;
 import java.util.List;
 
@@ -37,4 +38,5 @@ public interface CountryService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+    List<Country> findAllCountries();
 }

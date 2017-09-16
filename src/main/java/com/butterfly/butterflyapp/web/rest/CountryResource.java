@@ -1,13 +1,16 @@
 package com.butterfly.butterflyapp.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.butterfly.butterflyapp.domain.Country;
 import com.butterfly.butterflyapp.domain.User;
+import com.butterfly.butterflyapp.repository.CountryRepository;
 import com.butterfly.butterflyapp.service.CountryService;
 import com.butterfly.butterflyapp.web.rest.util.HeaderUtil;
 import com.butterfly.butterflyapp.service.dto.CountryDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -117,10 +120,20 @@ public class CountryResource {
         countryService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+    @Autowired
+    CountryRepository c;
     
-    @GetMapping("/tes")
-    public Long test(HttpSession session) {
-    	Long l=(Long)session.getAttribute("userId");
-    	return l;
+    @GetMapping("/tes/{id}")
+    public Country test(@PathVariable long id) {
+    	
+    	return c.findOne(id);
     }
+    
+    @GetMapping("/countries/all")
+    public List<Country> allCountries() {
+    	
+    	return countryService.findAllCountries();
+    }
+    
+    
 }

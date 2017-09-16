@@ -84,4 +84,10 @@ public class CountryServiceImpl implements CountryService{
         log.debug("Request to delete Country : {}", id);
         countryRepository.delete(id);
     }
+
+	@Override
+	public List<Country> findAllCountries() {
+		
+		return countryRepository.findAll();
+	}
 }

@@ -1,6 +1,8 @@
 package com.butterfly.butterflyapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -30,8 +32,9 @@ public class District implements Serializable {
     @ManyToOne
     private State state;
 
-    @OneToMany(mappedBy = "district")
-    @JsonIgnore
+ 
+    @OneToMany(mappedBy = "district",fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"district"})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Location> locations = new HashSet<>();
 
