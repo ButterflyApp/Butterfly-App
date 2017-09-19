@@ -38,13 +38,13 @@ export class HomeComponent implements OnInit {
 }
 
   ngOnInit() {
-   // this.loading=true;
+    this.loading=true;
     this.principal.identity().then((account) => {
       this.account = account;
       
-      console.log(JSON.stringify(this.account))
+    //  console.log(JSON.stringify(this.account))
     });
-
+    this.loading=false;
     this.registerAuthenticationSuccess();
     
   }
@@ -56,7 +56,9 @@ export class HomeComponent implements OnInit {
         this.account = account;
        
       });
+     
     });
+   // this.loading = true;
   }
   isState = false;
   isAuthenticated() {

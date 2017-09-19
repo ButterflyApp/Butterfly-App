@@ -3,10 +3,10 @@
 				<span class="hipster img-fluid img-rounded"></span>
 			</div> -->
 
-	 <div class="loading" *ngIf="loading">
+	<div class="loading" *ngIf="loading">
 		Loading....
-	  </div>
-	
+	</div>
+
 	<div class="col-md-9">
 
 
@@ -38,7 +38,7 @@
 								<div style="margin: 0cm 0cm 0cm 2cm; background-color: white; ">
 									<h5>{{state.districtCount}} Districts</h5>
 									<h5>{{state.locationCount}} Butterfly Tourist Locations</h5>
-									<div class="thumbnail" *ngIf="state.image1 && state.image2 && state.image3 && state.image4 && state.image5">
+								<div class="thumbnail" *ngIf="state.image1 && state.image2 && state.image3 && state.image4 && state.image5">
 
 										<img [src]="'data:' + state.image1ContentType + ';base64,' + state.image1" style="width: 150px; height: 150px;" alt="Nature">&emsp;
 										<img [src]="'data:' + state.image2ContentType + ';base64,' + state.image2" style="width: 150px; height: 150px;" alt="state image">&emsp;
@@ -47,11 +47,6 @@
 										<img [src]="'data:' + state.image5ContentType + ';base64,' + state.image5" style="width: 150px; height: 150px;" alt="state image">
 
 									</div>
-									<!-- <h6>5/5-Butterfly Customer Rating</h6>
-								<h6>15000 Travelers Like You</h6>
-								<h6>1150 Hotels And Resorts</h6> -->
-
-
 								</div>
 								<br>
 
@@ -74,3 +69,11 @@
 
 	</div>
 </div>
+
+<!--
+<div class="container">
+	<h2>Thumbnail</h2>
+	<p>The .img-thumbnail class creates a thumbnail of the image:</p>            
+	<img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
+  </div>
+-->
