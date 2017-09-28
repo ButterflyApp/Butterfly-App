@@ -177,7 +177,7 @@ public class CountryResource {
 
 				}
 
-				if (stateLocations.size() >= 5) {
+				if (stateLocations.size() >= 3) {
 
 					int s = (int) (Math.random() * stateLocations.size());
 					sm.setImage1(stateLocations.get(s).getImage1());

@@ -17,8 +17,9 @@ export class StatesService {
 
       findDistrict(id: number) {
         
-       const url = `/api/location/districts/state/${id}`;
-       
+       //const url = `/api/location/districts/state/${id}`;
+       const url = `/api/districts/state/all/${id}`;
+      
            return this.http.get(url)
              .map((resp: Response) => {
                

@@ -20,6 +20,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing District.
@@ -169,5 +170,61 @@ public class DistrictResource {
 		return districtMediator;
 
 	}
+	
+	@GetMapping("/districts/state/all/{id}")
+	public List<DistrictMediator> findDistrictLocations(@PathVariable Long id) {
+
+		List<District> distList = districtService.findByStateId(id);
+		List<DistrictMediator> districtMediator = new ArrayList<DistrictMediator>();
+		
+		for (District distr : distList) {
+			List<Location>locationList=new ArrayList<Location>();
+			DistrictMediator d = new DistrictMediator();
+			d.setStateName(distr.getState().getStateName());
+			d.setId(distr.getId());
+			d.setDistrictName(distr.getDistrictName());
+			
+			Set<Location> locations=distr.getLocations();
+			for(Location location:locations) {
+				
+				locationList.add(location);
+			}
+			
+			if (locationList.size() != 0) {
+
+				int s = (int) (Math.random() * locationList.size());
+				d.setImage1(locationList.get(s).getImage1());
+				d.setImage1ContentType(locationList.get(s).getImage1ContentType());
+
+				int s2 = (int) (Math.random() * locationList.size());
+				d.setImage2(locationList.get(s2).getImage2());
+				d.setImage2ContentType(locationList.get(s2).getImage2ContentType());
+
+				int s3 = (int) (Math.random() * locationList.size());
+				d.setImage3(locationList.get(s3).getImage3());
+				d.setImage3ContentType(locationList.get(s3).getImage3ContentType());
+
+				int s4 = (int) (Math.random() * locationList.size());
+				d.setImage4(locationList.get(s4).getImage4());
+				d.setImage4ContentType(locationList.get(s4).getImage4ContentType());
+
+				int s5 = (int) (Math.random() * locationList.size());
+				d.setImage5(locationList.get(s5).getImage5());
+				d.setImage5ContentType(locationList.get(s5).getImage5ContentType());
+
+			}
+			
+			
+			
+		//	List<Location> locations = locationService.findByDistrictId(distr.getId());
+			d.setLocationCount(locations.size());
+			districtMediator.add(d);
+
+		}
+
+		return districtMediator;
+
+	}
+
 
 }

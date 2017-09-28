@@ -1,4 +1,11 @@
-<div class="row">
+<style>
+	
+		#map-canvas{
+			width: 100%;
+			height: 600px;
+		
+		}
+	</style><div class="row">
 
 	<div class="col-md-9" *ngIf="location">
 
@@ -25,6 +32,60 @@
 				<br>
 			</div>
 			<br><br><br><br><br>
+			
+			
 		</div>
 	</div>
 </div>
+
+
+
+<div id="map_container"></div>
+	
+
+	<input type="text" id="mapsearch"   size="50" />
+
+	<div id="map-canvas" ></div>
+	
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuuDCyjokr7rRCdhKmYQofHebilQfJ28w&libraries=places" type="text/javascript"></script>
+	
+	<script>
+	
+		var map=new google.maps.Map(document.getElementById('map-canvas'),{
+			center:{
+				lat:27.72,
+				lng:85.36
+				
+			},
+			zoom:10
+			
+			
+		});
+		var marker= new google.maps.Marker({
+			position:{
+				lat:27.72,
+				lng:85.36
+			},
+			map:map,
+			draggable:true
+		});
+		
+		var searchBox=new google.maps.places.SearchBox(document.getElementById('mapsearch'));
+		
+		google.maps.event.addListener(searchBox,'places_changed',function(){
+			
+			var places=searchBox.getPlaces();
+			var bounds=new google.maps.LatLngBounds();
+			var i,place;
+			
+			for(i=0;place=places[i];i++){
+				bounds.extend(place.geometry.location);
+				marker.setPosition(place.geometry.location);
+				
+			}
+			map.fitBounds(bounds);
+			map.setZoom(10);
+			
+		});
+	
+	</script>
