@@ -163,9 +163,39 @@ public class DistrictResource {
 			d.setDistrictName(distr.getDistrictName());
 			List<Location> locations = locationService.findByDistrictId(distr.getId());
 			d.setLocationCount(locations.size());
+			
+			
+			if (locations.size() != 0) {
+
+				int s = (int) (Math.random() * locations.size());
+				d.setImage1(locations.get(s).getImage1());
+				d.setImage1ContentType(locations.get(s).getImage1ContentType());
+
+				int s2 = (int) (Math.random() * locations.size());
+				d.setImage2(locations.get(s2).getImage2());
+				d.setImage2ContentType(locations.get(s2).getImage2ContentType());
+
+				int s3 = (int) (Math.random() * locations.size());
+				d.setImage3(locations.get(s3).getImage3());
+				d.setImage3ContentType(locations.get(s3).getImage3ContentType());
+
+				int s4 = (int) (Math.random() * locations.size());
+				d.setImage4(locations.get(s4).getImage4());
+				d.setImage4ContentType(locations.get(s4).getImage4ContentType());
+
+				int s5 = (int) (Math.random() * locations.size());
+				d.setImage5(locations.get(s5).getImage5());
+				d.setImage5ContentType(locations.get(s5).getImage5ContentType());
+
+			}
+			
+			
+			
 			districtMediator.add(d);
 
 		}
+		
+		
 
 		return districtMediator;
 
@@ -176,9 +206,10 @@ public class DistrictResource {
 
 		List<District> distList = districtService.findByStateId(id);
 		List<DistrictMediator> districtMediator = new ArrayList<DistrictMediator>();
+		List<Location>locationList=null;
 		
 		for (District distr : distList) {
-			List<Location>locationList=new ArrayList<Location>();
+			locationList=new ArrayList<Location>();
 			DistrictMediator d = new DistrictMediator();
 			d.setStateName(distr.getState().getStateName());
 			d.setId(distr.getId());
@@ -217,7 +248,7 @@ public class DistrictResource {
 			
 			
 		//	List<Location> locations = locationService.findByDistrictId(distr.getId());
-			d.setLocationCount(locations.size());
+			d.setLocationCount(locationList.size());
 			districtMediator.add(d);
 
 		}
