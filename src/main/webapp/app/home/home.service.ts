@@ -15,8 +15,8 @@ export class HomeService {
   }
 
   viewStates() {
-    // const url = `/api/states/allData`;
-    const url = `/api/countries/all`;
+     const url = `/api/states/allData`;
+    //const url = `/api/countries/all`;
     return this.http.get(url)
       .map((resp: Response) => {
         // console.log(JSON.parse(JSON.stringify(resp))._body);
