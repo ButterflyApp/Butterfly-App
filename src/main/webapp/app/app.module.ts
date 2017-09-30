@@ -12,6 +12,7 @@ import { ButterflyAppAccountModule } from './account/account.module';
 import { ButterflyAppEntityModule } from './entities/entity.module';
 import { ButterflyAppStatesModule } from './states/states.module';
 import { ButterflyAppPlaceModule } from './place/place.module';
+import { ButterflyAppProfileModule } from './profile/profile.module';
 
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
@@ -44,6 +45,7 @@ import {
         ButterflyAppEntityModule,
         ButterflyAppStatesModule,
         ButterflyAppPlaceModule,
+        ButterflyAppProfileModule,
         LoadingModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
    

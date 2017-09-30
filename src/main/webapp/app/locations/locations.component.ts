@@ -23,6 +23,7 @@ export class LocationsComponent {
   modalRef: NgbModalRef;
   locations: any;
   id: number;
+  isNavbarCollapsed: boolean;
 
   
   constructor(
@@ -40,7 +41,9 @@ export class LocationsComponent {
   }
 
 
-
+  collapseNavbar() {
+    this.isNavbarCollapsed = true;
+  }
   login() {
     this.modalRef = this.loginModalService.open();
   }
