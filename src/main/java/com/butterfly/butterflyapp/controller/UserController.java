@@ -25,5 +25,13 @@ public class UserController {
 	  
 	  return user;
   }
+  
+  @GetMapping("/user/read/{login}")
+  public User getUser(@PathVariable String login) {
+	  User user =userService.findByLogin(login);
+	
+	  
+	  return user;
+  }
 	
 }

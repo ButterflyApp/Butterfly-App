@@ -8,4 +8,5 @@ import com.butterfly.butterflyapp.domain.User;
 public interface NewUserService {
 
 	public User findByLogin(String login);
+	public User findOne(Long id);
 }

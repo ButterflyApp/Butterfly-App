@@ -14,9 +14,9 @@ export class ProfileService {
 
   }
 
-  findPlace(id: number) {
+  findUser(login :string ) {
     
-   const url = `/api/locations/getOne/${id}`;
+   const url = `/api/user/read/${login}`;
    
        return this.http.get(url)
          .map((resp: Response) => {

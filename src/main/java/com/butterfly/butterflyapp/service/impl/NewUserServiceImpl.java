@@ -19,4 +19,10 @@ public class NewUserServiceImpl implements NewUserService {
 		return userRepository.findByLogin(login);
 	}
 
+	@Override
+	public User findOne(Long id) {
+		
+		return userRepository.findOne(id);
+	}
+
 }

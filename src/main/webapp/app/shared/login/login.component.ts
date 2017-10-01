@@ -52,6 +52,10 @@ export class JhiLoginModalComponent implements AfterViewInit {
         }).then(() => {
             this.authenticationError = false;
             this.activeModal.dismiss('login success');
+            
+            
+                localStorage.setItem('username', this.username);
+            
             this.loginService.saveId( this.username).subscribe(res=>{this.user=res;console.log(res)},error=>console.log(error))
             
             if (this.router.url === '/register' || (/activate/.test(this.router.url)) ||

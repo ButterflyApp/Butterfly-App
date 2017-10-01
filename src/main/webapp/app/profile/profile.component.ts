@@ -21,7 +21,7 @@ import {ActivatedRoute} from '@angular/router';
 export class ProfileComponent implements OnInit  {
   account: Account;
   modalRef: NgbModalRef;
-  location: any;
+  user: any;
   ids: number;
   isNavbarCollapsed: boolean;
   
@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit  {
    
   ) {
     this.ids = route.snapshot.params['id'];
- //  this.profileService.findPlace( this.ids).subscribe(res=>{this.location=res;console.log(res)},error=>console.log(error))
+   this.profileService.findUser(localStorage.getItem('username')).subscribe(res=>{this.user=res;console.log(res)},error=>console.log(error))
 
   }
 
