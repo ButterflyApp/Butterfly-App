@@ -72,9 +72,9 @@ export class HomeComponent implements OnInit {
     return this.principal.isAuthenticated();
   }
   getAllStates() {
-   // this.loading = true;
+    this.loading = true;
     this.homeService.viewStates().finally(() => {
-       //this.loading = false;
+       this.loading = false;
   
     }).
       subscribe((res) => {

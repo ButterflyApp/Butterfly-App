@@ -17,6 +17,20 @@ Browser Upgrade Prompt
     color: #000;
     padding: 0.2em 0;
 }
+.loading {
+    opacity: 0.8;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1055;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: url('../../content/images/loading2.gif');
+    background-position: center;
+    background-size: contain;
+     background-repeat: no-repeat;
+}
 
 /* ==========================================================================
 Generic styles
