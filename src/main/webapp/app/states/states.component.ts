@@ -24,6 +24,7 @@ export class StatesComponent implements OnInit {
   districts: any;
   ids: number;
   isNavbarCollapsed: boolean;
+  public loading = false;
 
   constructor(
     route: ActivatedRoute,
@@ -34,7 +35,14 @@ export class StatesComponent implements OnInit {
 
   ) {
     this.ids = route.snapshot.params['pid'];
-    this.statesService.findDistrict(this.ids).subscribe(res => { this.districts = res; console.log(res) }, error => console.log(error))
+    this.loading = true;
+    this.statesService.findDistrict(this.ids).finally(() => {
+      this.loading = false;
+    })
+      .subscribe(res => {
+        this.districts = res; console.log(res)
+      }, error => console.log(error))
+
 
   }
 

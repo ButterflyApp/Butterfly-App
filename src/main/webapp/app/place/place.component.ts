@@ -24,6 +24,8 @@ export class PlaceComponent implements OnInit {
   location: any;
   ids: number;
   isNavbarCollapsed: boolean;
+  public loading=false;
+
 
   constructor(
     route: ActivatedRoute,
@@ -34,7 +36,11 @@ export class PlaceComponent implements OnInit {
 
   ) {
     this.ids = route.snapshot.params['id'];
-    this.placeService.findPlace(this.ids).subscribe(res => { this.location = res; console.log(res) }, error => console.log(error))
+    this.loading=true;
+    this.placeService.findPlace(this.ids).finally(()=>{
+      this.loading=false;
+    })
+    .subscribe(res => { this.location = res; console.log(res) }, error => console.log(error))
 
   }
 

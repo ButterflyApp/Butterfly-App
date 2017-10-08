@@ -24,6 +24,7 @@ export class LocationsComponent {
   locations: any;
   id: number;
   isNavbarCollapsed: boolean;
+  public loading = false;
 
   
   constructor(
@@ -35,7 +36,11 @@ export class LocationsComponent {
    
   ) {
     this.id = route.snapshot.params['lid'];
-    this.locationsService.findLocations( this.id).subscribe(res=>{this.locations=res;console.log(res)},error=>console.log(error))
+    this.loading = true;
+    this.locationsService.findLocations( this.id).finally(()=>{
+      this.loading=false;
+    })
+    .subscribe(res=>{this.locations=res;console.log(res)},error=>console.log(error))
  
   
   }

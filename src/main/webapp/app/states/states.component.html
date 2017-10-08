@@ -1,8 +1,12 @@
 <div class="row">
-
+	<div class="loading" *ngIf="loading">
+		Loading....
+	</div>
 
 	<div class="col-md-9" *ngIf="districts">
+
 		<div class="alert alert-success">
+
 			<h2 style="color: black; margin: 0cm 0cm 0cm 1cm; font-family: Times New Roman;">{{districts[0].stateName}}</h2><br>
 			<div *ngFor="let district of !!districts ? districts : null " align="center">
 				<a routerLink="locations/{{district.id}}" (click)="collapseNavbar()" style="text-decoration: none;">

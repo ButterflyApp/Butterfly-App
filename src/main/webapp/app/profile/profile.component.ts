@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit  {
   user: any;
   ids: number;
   isNavbarCollapsed: boolean;
+  public loading=false;
   
   constructor(
     route: ActivatedRoute,
@@ -34,7 +35,10 @@ export class ProfileComponent implements OnInit  {
    
   ) {
     this.ids = route.snapshot.params['id'];
-   this.profileService.findUser(localStorage.getItem('username')).subscribe(res=>{this.user=res;console.log(res)},error=>console.log(error))
+   this.profileService.findUser(localStorage.getItem('username')).finally(()=>{
+     this.loading=false;
+   })
+   .subscribe(res=>{this.user=res;console.log(res)},error=>console.log(error))
 
   }
 
