@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   states: any;
   isNavbarCollapsed: boolean;
   public loading = false;
+ 
   
   constructor(
     private principal: Principal,
