@@ -15,13 +15,13 @@
 
 						<h3 style="color: #2F4F4F; margin: 0cm 0cm 0cm 1cm; font-family: Times New Roman;">{{district.districtName}}</h3>
 						<h4 style="color: #2F4F4F; margin: 0cm 0cm 0cm 1cm; font-family: Times New Roman;">{{district.locationCount}} Tourist Locations</h4>
-						<div class="thumbnail" *ngIf="district.image1 && district.image2 && district.image3 && district.image4 && district.image5">
+						<div  *ngIf="district.image1 && district.image2 && district.image3 && district.image4 && district.image5">
 
-							<img [src]="'data:' + district.image1ContentType + ';base64,' + district.image1" style="width: 150px; height: 150px;" alt="Nature">&nbsp;
-							<img [src]="'data:' + district.image2ContentType + ';base64,' + district.image2" style="width: 150px; height: 150px;" alt="state image">&nbsp;
-							<img [src]="'data:' + district.image3ContentType + ';base64,' + district.image3" style="width: 150px; height: 150px;" alt="state image">&nbsp;
-							<img [src]="'data:' + district.image4ContentType + ';base64,' + district.image4" style="width: 150px; height: 150px;" alt="state image">&nbsp;
-							<img [src]="'data:' + district.image5ContentType + ';base64,' + district.image5" style="width: 150px; height: 150px;" alt="state image">
+							<img class="img-thumbnail"[src]="'data:' + district.image1ContentType + ';base64,' + district.image1" style="width: 150px; height: 150px;" alt="Nature">&nbsp;
+							<img class="img-thumbnail"[src]="'data:' + district.image2ContentType + ';base64,' + district.image2" style="width: 150px; height: 150px;" alt="state image">&nbsp;
+							<img class="img-thumbnail" [src]="'data:' + district.image3ContentType + ';base64,' + district.image3" style="width: 150px; height: 150px;" alt="state image">&nbsp;
+							<img class="img-thumbnail" [src]="'data:' + district.image4ContentType + ';base64,' + district.image4" style="width: 150px; height: 150px;" alt="state image">&nbsp;
+							<img class="img-thumbnail"[src]="'data:' + district.image5ContentType + ';base64,' + district.image5" style="width: 150px; height: 150px;" alt="state image">
 
 						</div>
 

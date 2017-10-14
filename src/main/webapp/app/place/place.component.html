@@ -9,14 +9,14 @@
 			<h1 align="center" style="font-family: Times New Roman; color: black;">{{location.locationName}}</h1><br>
 			<div class="alert alert-success" style="background-color: white;">
 				<br>
-				<div class="thumbnail" *ngIf="location.image1 && location.image2 && location.image3 && location.image4 && location.image5">
+				<div  *ngIf="location.image1 && location.image2 && location.image3 && location.image4 && location.image5">
 
 
-					<img [src]="'data:' + location.image1ContentType + ';base64,' + location.image1" style="width: 150px; height: 150px;" alt="location image">&emsp;
-					<img [src]="'data:' + location.image2ContentType + ';base64,' + location.image2" style="width: 150px; height: 150px;" alt="location image">&emsp;
-					<img [src]="'data:' + location.image3ContentType + ';base64,' + location.image3" style="width: 150px; height: 150px;" alt="location image">&emsp;
-					<img [src]="'data:' + location.image4ContentType + ';base64,' + location.image4" style="width: 150px; height: 150px;" alt="location image">&emsp;
-					<img [src]="'data:' + location.image5ContentType + ';base64,' + location.image5" style="width: 150px; height: 150px;" alt="location image">&emsp;
+					<img class="img-thumbnail"[src]="'data:' + location.image1ContentType + ';base64,' + location.image1" style="width: 150px; height: 150px;" alt="location image">&emsp;
+					<img class="img-thumbnail"[src]="'data:' + location.image2ContentType + ';base64,' + location.image2" style="width: 150px; height: 150px;" alt="location image">&emsp;
+					<img class="img-thumbnail"[src]="'data:' + location.image3ContentType + ';base64,' + location.image3" style="width: 150px; height: 150px;" alt="location image">&emsp;
+					<img class="img-thumbnail"[src]="'data:' + location.image4ContentType + ';base64,' + location.image4" style="width: 150px; height: 150px;" alt="location image">&emsp;
+					<img class="img-thumbnail"[src]="'data:' + location.image5ContentType + ';base64,' + location.image5" style="width: 150px; height: 150px;" alt="location image">&emsp;
 
 
 				</div>
