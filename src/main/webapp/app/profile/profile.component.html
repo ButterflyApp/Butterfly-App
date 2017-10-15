@@ -4,13 +4,32 @@
 	</div>
 
 	<div class="col-md-9" *ngIf="user">
-
-
-
-
 		<div class="alert alert-success">
-			<h1 style="color: black; margin: 0cm 0cm 0cm 1cm; font-family: Times New Roman;">{{user.login}} </h1>
 
+			<img class="img-thumbnail" src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(97).jpg" style="width: 150px; height: 150px;"
+			 alt="Nature">
+			<h1 style="color: black; margin: 0cm 0cm 0cm 0.5cm; font-family: Times New Roman;">{{user.login}} </h1>
+			<div class="edit"style="height:500px;background-color: white;"><br>&emsp;
+					<button type="button" class="btn btn-primary waves-light" mdbRippleRadius>About</button>
+					
+					<!-- Default button -->
+					<button type="button" class="btn btn-default waves-light" mdbRippleRadius [routerLink]="['/', { outlets: { popup: ['country-my-suffix-new'] } }]">Photos</button>
+					
+					<!-- Secondary button -->
+					<button type="button" class="btn btn-secondary waves-light" mdbRippleRadius>Friends</button>
+					
+					<!-- Indicates a successful or positive action -->
+					<button type="button" class="btn btn-success waves-light" mdbRippleRadius>My Trips</button>
+					
+					<!-- Contextual button for informational alert messages -->
+					<button type="button" class="btn btn-info waves-light" mdbRippleRadius>Plans</button>
+					
+					<!-- Indicates caution should be taken with this action -->
+					<button type="button" class="btn btn-warning waves-light" mdbRippleRadius>Pages</button>
+					
+					<!-- Indicates a dangerous or potentially negative action -->
+					<button type="button" class="btn btn-danger waves-light" mdbRippleRadius>My Locations</button>
+			</div>
 
 
 		</div>

@@ -13,20 +13,20 @@
 
 		<div [ngSwitch]="isAuthenticated()">
 
+			<div class="first" *ngSwitchCase="false">
+				<div class="alert alert-warning" *ngSwitchCase="false">
 
-			<div class="alert alert-warning" *ngSwitchCase="false">
+					<span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
+					<a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a> </div>
 
-				<span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
-				<a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a> </div>
+				<div class="alert alert-warning" *ngSwitchCase="false">
 
-			<div class="alert alert-warning" *ngSwitchCase="false">
+					<span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
+					<a class="alert-link" routerLink="register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
 
-				<span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
-				<a class="alert-link" routerLink="register" jhiTranslate="global.messages.info.register.link">Register a new account</a>
+				</div>
 
 			</div>
-
-
 			<div class="alert alert-success" *ngSwitchCase="true">
 
 				<h1 align="center" style="color: black;font-family: Times New Roman;">INDIA</h1>
@@ -42,13 +42,18 @@
 								<div style="margin: 0cm 0cm 0cm 2cm; background-color: white; ">
 									<h5>{{state.districtCount}} Districts</h5>
 									<h5>{{state.locationCount}} Butterfly Tourist Locations</h5>
-									<div  *ngIf="state.image1 && state.image2 && state.image3 && state.image4 && state.image5">
-										
-										<img class="img-thumbnail" [src]="'data:' + state.image1ContentType + ';base64,' + state.image1" style="width: 150px; height: 150px;" alt="Nature">&nbsp;
-										<img class="img-thumbnail" [src]="'data:' + state.image2ContentType + ';base64,' + state.image2" style="width: 150px; height: 150px;" alt="state image">&nbsp;
-										<img class="img-thumbnail" [src]="'data:' + state.image3ContentType + ';base64,' + state.image3"style="width: 150px; height: 150px;" alt="state image">&nbsp;
-										<img class="img-thumbnail" [src]="'data:' + state.image4ContentType + ';base64,' + state.image4" style="width: 150px; height: 150px;" alt="state image">&nbsp;
-										<img class="img-thumbnail" [src]="'data:' + state.image5ContentType + ';base64,' + state.image5" style="width: 150px; height: 150px;" alt="state image">
+									<div *ngIf="state.image1 && state.image2 && state.image3 && state.image4 && state.image5">
+
+										<img class="img-thumbnail" [src]="'data:' + state.image1ContentType + ';base64,' + state.image1" style="width: 150px; height: 150px;"
+										 alt="Nature">&nbsp;
+										<img class="img-thumbnail" [src]="'data:' + state.image2ContentType + ';base64,' + state.image2" style="width: 150px; height: 150px;"
+										 alt="state image">&nbsp;
+										<img class="img-thumbnail" [src]="'data:' + state.image3ContentType + ';base64,' + state.image3" style="width: 150px; height: 150px;"
+										 alt="state image">&nbsp;
+										<img class="img-thumbnail" [src]="'data:' + state.image4ContentType + ';base64,' + state.image4" style="width: 150px; height: 150px;"
+										 alt="state image">&nbsp;
+										<img class="img-thumbnail" [src]="'data:' + state.image5ContentType + ';base64,' + state.image5" style="width: 150px; height: 150px;"
+										 alt="state image">
 
 									</div>
 								</div>

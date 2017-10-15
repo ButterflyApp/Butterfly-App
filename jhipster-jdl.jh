@@ -23,7 +23,6 @@ entity Location {
 
 
 
-
 relationship OneToMany {
 	Country{state} to State,
     State{district} to District,
