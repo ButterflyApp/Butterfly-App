@@ -10,20 +10,25 @@
 					Create new Location
 					</span>
 				</button>
-			<h2 style="color: black; margin: 0cm 0cm 0cm 1cm; font-family: Times New Roman;">{{locations[0].district.districtName}}</h2><br>
+			<h2 *ngIf="district" style="color: black; margin: 0cm 0cm 0cm 1cm; font-family: Times New Roman;">{{district.districtName}}</h2><br>
 
 			<div *ngFor="let location of !!locations ? locations : null " align="center">
 				<a routerLink="place/{{location.id}}" (click)="collapseNavbar()" style="text-decoration: none;">
 					<div class="alert alert-success" style="background-color: white;">
 
 						<h3 style="color: #2F4F4F; margin: 0cm 0cm 0cm 1cm; font-family: Times New Roman; color: black;">{{location.locationName}}</h3>
-						<div  *ngIf="location.image1 && location.image2 && location.image3 && location.image4 && location.image5">
+						<div *ngIf="location.image1 && location.image2 && location.image3 && location.image4 && location.image5">
 
-							<img class="img-thumbnail" [src]="'data:' + location.image1ContentType + ';base64,' + location.image1" style="width: 150px; height: 150px;" alt="location image">&emsp;
-							<img class="img-thumbnail"[src]="'data:' + location.image2ContentType + ';base64,' + location.image2" style="width: 150px; height: 150px;" alt="location image">&emsp;
-							<img class="img-thumbnail"[src]="'data:' + location.image3ContentType + ';base64,' + location.image3" style="width: 150px; height: 150px;" alt="location image">&emsp;
-							<img class="img-thumbnail"[src]="'data:' + location.image4ContentType + ';base64,' + location.image4" style="width: 150px; height: 150px;" alt="location image">&emsp;
-							<img class="img-thumbnail"[src]="'data:' + location.image5ContentType + ';base64,' + location.image5" style="width: 150px; height: 150px;" alt="location image">&emsp;
+							<img class="img-thumbnail" [src]="'data:' + location.image1ContentType + ';base64,' + location.image1" style="width: 150px; height: 150px;"
+							 alt="location image">&emsp;
+							<img class="img-thumbnail" [src]="'data:' + location.image2ContentType + ';base64,' + location.image2" style="width: 150px; height: 150px;"
+							 alt="location image">&emsp;
+							<img class="img-thumbnail" [src]="'data:' + location.image3ContentType + ';base64,' + location.image3" style="width: 150px; height: 150px;"
+							 alt="location image">&emsp;
+							<img class="img-thumbnail" [src]="'data:' + location.image4ContentType + ';base64,' + location.image4" style="width: 150px; height: 150px;"
+							 alt="location image">&emsp;
+							<img class="img-thumbnail" [src]="'data:' + location.image5ContentType + ';base64,' + location.image5" style="width: 150px; height: 150px;"
+							 alt="location image">&emsp;
 
 						</div>
 
@@ -36,3 +41,4 @@
 		</div>
 	</div>
 </div>
+

@@ -7,7 +7,8 @@ import { Account, LoginModalService, Principal } from '../shared';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'jhi-locations',
@@ -25,24 +26,30 @@ export class LocationsComponent {
   id: number;
   isNavbarCollapsed: boolean;
   public loading = false;
+  district: any;
 
-  
   constructor(
     route: ActivatedRoute,
     private principal: Principal,
     private loginModalService: LoginModalService,
     private eventManager: JhiEventManager,
     private locationsService: LocationsService,
-   
+
   ) {
     this.id = route.snapshot.params['lid'];
     this.loading = true;
-    this.locationsService.findLocations( this.id).finally(()=>{
-      this.loading=false;
+    this.locationsService.findDistrictName(this.id).finally(() => {
+
+
     })
-    .subscribe(res=>{this.locations=res;console.log(res)},error=>console.log(error))
- 
-  
+      .subscribe(res => { this.district = res; console.log(res) }, error => console.log(error))
+    this.locationsService.findLocations(this.id).finally(() => {
+      this.loading = false;
+
+    })
+      .subscribe(res => { this.locations = res; console.log(res) }, error => console.log(error))
+
+    localStorage.setItem('disId', this.id + "");
   }
 
 

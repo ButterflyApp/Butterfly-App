@@ -20,10 +20,13 @@ export class LocationMySuffixDialogComponent implements OnInit {
 
     location: LocationMySuffix;
     isSaving: boolean;
+    id:number=1;
+    isNavbarCollapsed: boolean;
 
     districts: DistrictMySuffix[];
 
     constructor(
+        route: ActivatedRoute,
         public activeModal: NgbActiveModal,
         private dataUtils: JhiDataUtils,
         private alertService: JhiAlertService,
@@ -32,6 +35,7 @@ export class LocationMySuffixDialogComponent implements OnInit {
         private elementRef: ElementRef,
         private eventManager: JhiEventManager
     ) {
+        this.id =+ localStorage.getItem('disId');
     }
 
     ngOnInit() {
@@ -39,6 +43,9 @@ export class LocationMySuffixDialogComponent implements OnInit {
         this.districtService.query()
             .subscribe((res: ResponseWrapper) => { this.districts = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
+    collapseNavbar() {
+        this.isNavbarCollapsed = true;
+      }
 
     byteSize(field) {
         return this.dataUtils.byteSize(field);
@@ -71,6 +78,7 @@ export class LocationMySuffixDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        this.location.districtId=this.id;
         if (this.location.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.locationService.update(this.location));

@@ -256,6 +256,12 @@ public class DistrictResource {
 		return districtMediator;
 
 	}
+	@GetMapping("/name/district/{id}")
+	public String getDistrictName(@PathVariable Long id) {
+	
+		DistrictDTO districtDTO = districtService.findOne(id);
+		return districtDTO.getDistrictName();
+	}
 
 
 }
