@@ -21,6 +21,9 @@ public class Location implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "owner_id")
+    private Long ownerId;
+
     @Column(name = "location_name")
     private String locationName;
 
@@ -68,6 +71,19 @@ public class Location implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public Location ownerId(Long ownerId) {
+        this.ownerId = ownerId;
+        return this;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
     }
 
     public String getLocationName() {
@@ -250,6 +266,7 @@ public class Location implements Serializable {
     public String toString() {
         return "Location{" +
             "id=" + getId() +
+            ", ownerId='" + getOwnerId() + "'" +
             ", locationName='" + getLocationName() + "'" +
             ", image1='" + getImage1() + "'" +
             ", image1ContentType='" + image1ContentType + "'" +

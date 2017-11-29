@@ -20,13 +20,13 @@ export class LocationMySuffixDialogComponent implements OnInit {
 
     location: LocationMySuffix;
     isSaving: boolean;
-    id:number=1;
-    isNavbarCollapsed: boolean;
+    id: number;
+    ownerId: number;
+    user :any;
 
     districts: DistrictMySuffix[];
 
     constructor(
-        route: ActivatedRoute,
         public activeModal: NgbActiveModal,
         private dataUtils: JhiDataUtils,
         private alertService: JhiAlertService,
@@ -35,7 +35,11 @@ export class LocationMySuffixDialogComponent implements OnInit {
         private elementRef: ElementRef,
         private eventManager: JhiEventManager
     ) {
-        this.id =+ localStorage.getItem('disId');
+        this.id = + localStorage.getItem('disId');
+        this.locationService.findUser(localStorage.getItem('username')).finally(() => {
+
+        })
+            .subscribe(res => { this.user = res; console.log(res) }, error => console.log(error))
     }
 
     ngOnInit() {
@@ -43,9 +47,6 @@ export class LocationMySuffixDialogComponent implements OnInit {
         this.districtService.query()
             .subscribe((res: ResponseWrapper) => { this.districts = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
-    collapseNavbar() {
-        this.isNavbarCollapsed = true;
-      }
 
     byteSize(field) {
         return this.dataUtils.byteSize(field);
@@ -78,7 +79,8 @@ export class LocationMySuffixDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        this.location.districtId=this.id;
+        this.location.districtId = this.id;
+        this.location.ownerId=this.user.id;
         if (this.location.id !== undefined) {
             this.subscribeToSaveResponse(
                 this.locationService.update(this.location));
@@ -94,7 +96,7 @@ export class LocationMySuffixDialogComponent implements OnInit {
     }
 
     private onSaveSuccess(result: LocationMySuffix) {
-        this.eventManager.broadcast({ name: 'locationListModification', content: 'OK'});
+        this.eventManager.broadcast({ name: 'locationListModification', content: 'OK' });
         this.isSaving = false;
         this.activeModal.dismiss(result);
     }
@@ -129,11 +131,11 @@ export class LocationMySuffixPopupComponent implements OnInit, OnDestroy {
     constructor(
         private route: ActivatedRoute,
         private locationPopupService: LocationMySuffixPopupService
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            if ( params['id'] ) {
+            if (params['id']) {
                 this.locationPopupService
                     .open(LocationMySuffixDialogComponent as Component, params['id']);
             } else {

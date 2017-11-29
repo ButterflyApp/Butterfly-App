@@ -15,6 +15,7 @@
             "detail": {
                 "title": "Location"
             },
+            "ownerId": "Owner Id",
             "locationName": "Location Name",
             "image1": "Image 1",
             "image2": "Image 2",

@@ -12,6 +12,11 @@
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="location.id" readonly />
         </div>
+        <!-- <div class="form-group">
+            <label class="form-control-label" jhiTranslate="butterflyApp.location.ownerId" for="field_ownerId">Owner Id</label>
+            <input type="number" class="form-control" name="ownerId" id="field_ownerId"
+                [(ngModel)]="location.ownerId"  />
+        </div> -->
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="butterflyApp.location.locationName" for="field_locationName">Location Name</label>
             <input type="text" class="form-control" name="locationName" id="field_locationName"
@@ -110,9 +115,9 @@
                 <option [ngValue]="districtOption.id" *ngFor="let districtOption of districts; trackBy: trackDistrictById">{{districtOption.id}}</option>
             </select>
         </div> -->
-        <input type="hidden" class="form-control" value="{{id}}" name="distId" id="distId"
-        [(ngModel)]="id" />
-
+        <!-- <input type="hidden" class="form-control" value="{{id}}" name="distId" id="distId"
+        [(ngModel)]="id" /> -->
+       
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
@@ -122,5 +127,4 @@
             <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
         </button>
     </div>
-
 </form>

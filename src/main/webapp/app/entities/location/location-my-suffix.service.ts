@@ -51,4 +51,18 @@ export class LocationMySuffixService {
         const copy: LocationMySuffix = Object.assign({}, location);
         return copy;
     }
+    private handleError(errorResponse: Response) {
+        console.log(errorResponse.statusText);
+        return Observable.throw(errorResponse.json().error || 'Server error');
+
+    }
+    findUser(login: string) {
+
+        const url = `/api/user/read/${login}`;
+
+        return this.http.get(url)
+            .map((resp: Response) => {
+                return resp.json();
+            }).catch(this.handleError);
+    }
 }

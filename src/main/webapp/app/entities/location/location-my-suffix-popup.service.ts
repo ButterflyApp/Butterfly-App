@@ -3,15 +3,19 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { LocationMySuffix } from './location-my-suffix.model';
 import { LocationMySuffixService } from './location-my-suffix.service';
+import { Http, Response, Headers } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LocationMySuffixPopupService {
     private ngbModalRef: NgbModalRef;
+    user: any;
 
     constructor(
         private modalService: NgbModal,
         private router: Router,
-        private locationService: LocationMySuffixService
+        private locationService: LocationMySuffixService,
+        private http: Http
 
     ) {
         this.ngbModalRef = null;
@@ -40,15 +44,16 @@ export class LocationMySuffixPopupService {
     }
 
     locationModalRef(component: Component, location: LocationMySuffix): NgbModalRef {
-        const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static'});
+        const modalRef = this.modalService.open(component, { size: 'lg', backdrop: 'static' });
         modalRef.componentInstance.location = location;
         modalRef.result.then((result) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
+            this.router.navigate([{ outlets: { popup: null } }], { replaceUrl: true });
             this.ngbModalRef = null;
         }, (reason) => {
-            this.router.navigate([{ outlets: { popup: null }}], { replaceUrl: true });
+            this.router.navigate([{ outlets: { popup: null } }], { replaceUrl: true });
             this.ngbModalRef = null;
         });
         return modalRef;
     }
+
 }

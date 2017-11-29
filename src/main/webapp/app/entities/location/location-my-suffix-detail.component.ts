@@ -22,6 +22,7 @@ export class LocationMySuffixDetailComponent implements OnInit, OnDestroy {
         private locationService: LocationMySuffixService,
         private route: ActivatedRoute
     ) {
+        
     }
 
     ngOnInit() {

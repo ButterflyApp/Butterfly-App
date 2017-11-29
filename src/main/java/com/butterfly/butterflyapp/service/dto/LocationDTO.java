@@ -14,6 +14,8 @@ public class LocationDTO implements Serializable {
 
     private Long id;
 
+    private Long ownerId;
+
     private String locationName;
 
     @Lob
@@ -44,6 +46,14 @@ public class LocationDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
     }
 
     public String getLocationName() {
@@ -167,6 +177,7 @@ public class LocationDTO implements Serializable {
     public String toString() {
         return "LocationDTO{" +
             "id=" + getId() +
+            ", ownerId='" + getOwnerId() + "'" +
             ", locationName='" + getLocationName() + "'" +
             ", image1='" + getImage1() + "'" +
             ", image2='" + getImage2() + "'" +

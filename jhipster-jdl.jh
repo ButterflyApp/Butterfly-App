@@ -11,6 +11,7 @@ entity District {
 }
 
 entity Location {
+    ownerId Long,
 	locationName String,
      image1 ImageBlob,
      image2 ImageBlob,

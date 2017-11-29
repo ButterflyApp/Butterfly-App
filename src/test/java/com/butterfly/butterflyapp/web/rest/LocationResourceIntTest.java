@@ -41,6 +41,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = ButterflyApp.class)
 public class LocationResourceIntTest {
 
+    private static final Long DEFAULT_OWNER_ID = 1L;
+    private static final Long UPDATED_OWNER_ID = 2L;
+
     private static final String DEFAULT_LOCATION_NAME = "AAAAAAAAAA";
     private static final String UPDATED_LOCATION_NAME = "BBBBBBBBBB";
 
@@ -112,6 +115,7 @@ public class LocationResourceIntTest {
      */
     public static Location createEntity(EntityManager em) {
         Location location = new Location()
+            .ownerId(DEFAULT_OWNER_ID)
             .locationName(DEFAULT_LOCATION_NAME)
             .image1(DEFAULT_IMAGE_1)
             .image1ContentType(DEFAULT_IMAGE_1_CONTENT_TYPE)
@@ -147,6 +151,7 @@ public class LocationResourceIntTest {
         List<Location> locationList = locationRepository.findAll();
         assertThat(locationList).hasSize(databaseSizeBeforeCreate + 1);
         Location testLocation = locationList.get(locationList.size() - 1);
+        assertThat(testLocation.getOwnerId()).isEqualTo(DEFAULT_OWNER_ID);
         assertThat(testLocation.getLocationName()).isEqualTo(DEFAULT_LOCATION_NAME);
         assertThat(testLocation.getImage1()).isEqualTo(DEFAULT_IMAGE_1);
         assertThat(testLocation.getImage1ContentType()).isEqualTo(DEFAULT_IMAGE_1_CONTENT_TYPE);
@@ -191,6 +196,7 @@ public class LocationResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(location.getId().intValue())))
+            .andExpect(jsonPath("$.[*].ownerId").value(hasItem(DEFAULT_OWNER_ID.intValue())))
             .andExpect(jsonPath("$.[*].locationName").value(hasItem(DEFAULT_LOCATION_NAME.toString())))
             .andExpect(jsonPath("$.[*].image1ContentType").value(hasItem(DEFAULT_IMAGE_1_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image1").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE_1))))
@@ -215,6 +221,7 @@ public class LocationResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(location.getId().intValue()))
+            .andExpect(jsonPath("$.ownerId").value(DEFAULT_OWNER_ID.intValue()))
             .andExpect(jsonPath("$.locationName").value(DEFAULT_LOCATION_NAME.toString()))
             .andExpect(jsonPath("$.image1ContentType").value(DEFAULT_IMAGE_1_CONTENT_TYPE))
             .andExpect(jsonPath("$.image1").value(Base64Utils.encodeToString(DEFAULT_IMAGE_1)))
@@ -246,6 +253,7 @@ public class LocationResourceIntTest {
         // Update the location
         Location updatedLocation = locationRepository.findOne(location.getId());
         updatedLocation
+            .ownerId(UPDATED_OWNER_ID)
             .locationName(UPDATED_LOCATION_NAME)
             .image1(UPDATED_IMAGE_1)
             .image1ContentType(UPDATED_IMAGE_1_CONTENT_TYPE)
@@ -268,6 +276,7 @@ public class LocationResourceIntTest {
         List<Location> locationList = locationRepository.findAll();
         assertThat(locationList).hasSize(databaseSizeBeforeUpdate);
         Location testLocation = locationList.get(locationList.size() - 1);
+        assertThat(testLocation.getOwnerId()).isEqualTo(UPDATED_OWNER_ID);
         assertThat(testLocation.getLocationName()).isEqualTo(UPDATED_LOCATION_NAME);
         assertThat(testLocation.getImage1()).isEqualTo(UPDATED_IMAGE_1);
         assertThat(testLocation.getImage1ContentType()).isEqualTo(UPDATED_IMAGE_1_CONTENT_TYPE);
